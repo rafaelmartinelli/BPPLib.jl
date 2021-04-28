@@ -3,6 +3,9 @@ uuid = "4cecd8e0-2093-46a9-836b-e2148d4f1997"
 authors = ["Rafael Martinelli"]
 version = "0.1.0"
 
+[deps]
+ZipFile = "a5390f91-8eb1-5f08-bee0-b1d1ffed6cea"
+
 [compat]
 julia = "1.5.3"
 
