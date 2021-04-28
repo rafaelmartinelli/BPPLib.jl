@@ -35,12 +35,12 @@ See the [full list](https://github.com/rafaelmartinelli/BPPLib.jl/tree/main/data
 
 For example, to load `Falkenauer_u120_00.txt`:
 ```julia
-data = load(:Falkenauer_u120_00)
+data = loadBPP(:Falkenauer_u120_00)
 ```
 
 For custom BPP files:
 ```julia
-data = load("path/to/my/instance.ext")
+data = loadBPP("path/to/my/instance.ext")
 ```
 
 Related links:
