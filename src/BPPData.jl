@@ -6,16 +6,15 @@ end
 
 function loadBPP(instance::Symbol)
     file_name = joinpath(data_path, string(instance) * ".zip")
+    if !isfile(file_name)
+        println("File $(string(instance)) not found!")
+        return nothing
+    end
     name = splitext(basename(file_name))[1]
 
     file = ZipFile.Reader(file_name)
-    if isempty(file.files)
-        println("File $(string(instance)) not found!")
-        return nothing
-    else
-        values = parse.(Int64, split(read(file.files[1], String)))
-        return load(values, name)
-    end
+    values = parse.(Int64, split(read(file.files[1], String)))
+    return load(values, name)
 end
 
 function loadBPP(file_name::String)
