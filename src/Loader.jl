@@ -49,5 +49,4 @@ function load(values::Array{Int64}, name::String, type::Symbol)
         demands = values[4:2:end]
         return CSPData(name, capacity, weights, demands)
     end
-    return nothing
 end
