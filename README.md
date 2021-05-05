@@ -7,7 +7,6 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 This package reads `.txt` data files in `bpp` format for Bin Packing Problem (BPP) instances and returns `BPPData` type:
-
 ```julia
 struct BPPData
     name     ::String        # Instance name
@@ -16,21 +15,40 @@ struct BPPData
 end
 ```
 
+It also reads `.txt` data files in `csp` format for Cutting Stock Problem (CSP) instances and returns `CSPData` type:
+```julia
+struct CSPData
+    name     ::String        # Instance name
+    capacity ::Int64         # Bin capacity
+    weights  ::Vector{Int64} # Items' weights
+    demands  ::Vector{Int64} # Items' demands
+end
+```
+
 To install:
 ```julia
 ] add https://github.com/rafaelmartinelli/BPPLib.jl
 ```
 
-For example, to load `Falkenauer_u120_00.txt`:
+For example, to load BPP instance `Falkenauer_u120_00.txt`:
 ```julia
-data = loadBPP("/path/to/instance/Falkenauer_u120_00.txt")
+data = loadBPP("/path/to/BPP/instance/Falkenauer_u120_00.txt")
 ```
 
-You can find the classical BPP instances from the literature in the [BPPLib website](http://or.dei.unibo.it/library/bpplib).
+To load CSP instance `Falkenauer_u120_00.txt`:
+```julia
+data = loadCSP("/path/to/CSP/instance/Falkenauer_u120_00.txt")
+```
 
-Since there are more than 2000 instances from the literature, this package includes only 50 small randomly generated instances. For example, to load `PM_u010_01.txt`: 
+You can find the classical BPP and CSP instances from the literature in the [BPPLib website](http://or.dei.unibo.it/library/bpplib).
+
+Since there are more than 2000 instances in the literature, this package includes only 50 small randomly generated instances. For example, to load BPP instance `PM_u010_01.txt`: 
 ```julia
 data = loadBPP(:PM_u010_01)
+```
+Or to load CSP instance `PM_u010_01.txt`: 
+```julia
+data = loadCSP(:PM_u010_01)
 ```
 See the [full list](https://github.com/rafaelmartinelli/BPPLib.jl/tree/main/data).
 
