@@ -14,11 +14,6 @@ end
 
 function loadBounds(name::String)
     file_name = joinpath(data_path, "Bounds.zip")
-    if !isfile(file_name)
-        println("File Bounds.zip not found!")
-        return 0, typemax(Int64)
-    end
-
     file = ZipFile.Reader(file_name)
     values = split(read(file.files[1], String))
 

@@ -32,6 +32,8 @@ end
 @testset "BPPShow" begin
     data = loadBPP(:PM_u010_01)
     @test_nowarn println(data)
+    data = loadBPP(joinpath(pkgdir(BPPLib), "test/data/bpp/Falkenauer_u120_00.txt"))
+    @test_nowarn println(data)
 end
 
 @testset "CSPLoadSymbol" begin
@@ -66,6 +68,8 @@ end
 
 @testset "CSPShow" begin
     data = loadCSP(:PM_u010_01)
+    @test_nowarn println(data)
+    data = loadCSP(joinpath(pkgdir(BPPLib), "test/data/csp/Falkenauer_u120_00.txt"))
     @test_nowarn println(data)
 end
 
