@@ -5,6 +5,8 @@ using Test
     data = loadBPP(:PM_u010_01)
     @test length(data.weights) == 10
     @test data.capacity == 150
+    @test data.lb == typemin(Int64)
+    @test data.ub == typemax(Int64)
     @test data.name == "PM_u010_01"
 end
 
@@ -14,14 +16,16 @@ end
 end
 
 @testset "BPPLoadString" begin
-    data = loadBPP(joinpath(pkgdir(BPPLib), "test/data/PM_u010_01.txt"))
-    @test length(data.weights) == 10
+    data = loadBPP(joinpath(pkgdir(BPPLib), "test/data/bpp/Falkenauer_u120_00.txt"))
+    @test length(data.weights) == 120
     @test data.capacity == 150
-    @test data.name == "PM_u010_01"
+    @test data.lb == 48
+    @test data.ub == 48
+    @test data.name == "Falkenauer_u120_00"
 end
 
 @testset "BPPErrorString" begin
-    data = loadBPP(joinpath(pkgdir(BPPLib), "test/data/PM_u010_0.txt"))
+    data = loadBPP(joinpath(pkgdir(BPPLib), "not a file"))
     @test data === nothing
 end
 
@@ -35,6 +39,8 @@ end
     @test length(data.weights) == 10
     @test length(data.demands) == 10
     @test data.capacity == 150
+    @test data.lb == typemin(Int64)
+    @test data.ub == typemax(Int64)
     @test data.name == "PM_u010_01"
 end
 
@@ -44,15 +50,17 @@ end
 end
 
 @testset "CSPLoadString" begin
-    data = loadCSP(joinpath(pkgdir(BPPLib), "test/data/PM_u010_01.txt"))
-    @test length(data.weights) == 5
-    @test length(data.demands) == 5
+    data = loadCSP(joinpath(pkgdir(BPPLib), "test/data/csp/Falkenauer_u120_00.txt"))
+    @test length(data.weights) == 58
+    @test length(data.demands) == 58
     @test data.capacity == 150
-    @test data.name == "PM_u010_01"
+    @test data.lb == 48
+    @test data.ub == 48
+    @test data.name == "Falkenauer_u120_00"
 end
 
 @testset "CSPErrorString" begin
-    data = loadCSP(joinpath(pkgdir(BPPLib), "test/data/PM_u010_0.txt"))
+    data = loadCSP(joinpath(pkgdir(BPPLib), "not a file"))
     @test data === nothing
 end
 

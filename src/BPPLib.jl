@@ -2,7 +2,8 @@ module BPPLib
 
 import Base: show
 
-export BPPData, loadBPP, CSPData, loadCSP, toBPP, toCSP
+export BPPData, loadBPP, toCSP
+export CSPData, loadCSP, toBPP
 
 const data_path = joinpath(pkgdir(BPPLib), "data")
 
