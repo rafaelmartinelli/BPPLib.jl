@@ -41,12 +41,13 @@ end
 
 function load(values::Array{Int64}, name::String, type::Symbol)
     capacity = values[2]
+    lb, ub = loadBounds(name)
     if type == :BPP
         weights = values[3:end]
-        return BPPData(name, capacity, weights)
+        return BPPData(name, capacity, weights, lb, ub)
     else
         weights = values[3:2:end]
         demands = values[4:2:end]
-        return CSPData(name, capacity, weights, demands)
+        return CSPData(name, capacity, weights, demands, lb, ub)
     end
 end
