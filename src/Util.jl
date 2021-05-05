@@ -16,7 +16,7 @@ function loadBounds(name::String)
     file_name = joinpath(data_path, "Bounds.zip")
     if !isfile(file_name)
         println("File Bounds.zip not found!")
-        return typemin(Int64), typemax(Int64)
+        return 0, typemax(Int64)
     end
 
     file = ZipFile.Reader(file_name)
@@ -26,6 +26,6 @@ function loadBounds(name::String)
     if index !== nothing
         return parse(Int64, values[index + 1]), parse(Int64, values[index + 2])
     else
-        return typemin(Int64), typemax(Int64)
+        return 0, typemax(Int64)
     end
 end

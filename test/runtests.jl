@@ -5,7 +5,7 @@ using Test
     data = loadBPP(:PM_u010_01)
     @test length(data.weights) == 10
     @test data.capacity == 150
-    @test data.lb == typemin(Int64)
+    @test data.lb == 0
     @test data.ub == typemax(Int64)
     @test data.name == "PM_u010_01"
 end
@@ -39,7 +39,7 @@ end
     @test length(data.weights) == 10
     @test length(data.demands) == 10
     @test data.capacity == 150
-    @test data.lb == typemin(Int64)
+    @test data.lb == 0
     @test data.ub == typemax(Int64)
     @test data.name == "PM_u010_01"
 end

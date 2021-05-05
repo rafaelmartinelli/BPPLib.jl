@@ -11,11 +11,11 @@ end
 function Base.show(io::IO, data::CSPData)
     print(io, "CSP Data $(data.name)")
     print(io, " ($(length(data.weights)) elements,")
-    print(io, " ($(sum(data.demands)) elements,")
+    print(io, " $(sum(data.demands)) demands,")
     print(io, " capacity = $(data.capacity))")
-    if data.lb != typemin(Int64)
+    if data.ub != typemax(Int64)
         print(io, " [$(data.lb), $(data.ub)]")
     else
-        print(io, " [0, Inf]")
+        print(io, " [$(data.lb), Inf]")
     end
 end

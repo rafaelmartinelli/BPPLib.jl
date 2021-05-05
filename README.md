@@ -12,6 +12,9 @@ struct BPPData
     name     ::String        # Instance name
     capacity ::Int64         # Bin capacity
     weights  ::Vector{Int64} # Items' weights
+
+    lb       ::Int64         # Lower bound (0 if not known)
+    ub       ::Int64         # Upper bound (typemax(Int64) if not known)
 end
 ```
 
@@ -22,6 +25,9 @@ struct CSPData
     capacity ::Int64         # Bin capacity
     weights  ::Vector{Int64} # Items' weights
     demands  ::Vector{Int64} # Items' demands
+
+    lb       ::Int64         # Lower bound (0 if not known)
+    ub       ::Int64         # Upper bound (typemax(Int64) if not known)
 end
 ```
 
